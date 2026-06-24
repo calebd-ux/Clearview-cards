@@ -12,15 +12,17 @@ If the user asks you to create a printable business card for a new employee:
 
 1. **Find a Template:** Look in the `print-cards/` directory. Copy the file `template.html` and name the new file `[employee_firstname]_card.html` inside the `print-cards/` directory.
 2. **Edit the HTML:**
-   - **CRITICAL:** DO NOT touch, edit, or attempt to insert image files for the T-Mobile or T-Fiber logos. The logos are already perfectly built into the template using CSS and HTML tags (e.g. `<span class="t-logo">T</span>`). Leave the logo HTML and CSS exactly as they are.
+   - **CRITICAL:** The logos are perfectly built into the template using SVG image links to `../assets/`. Leave the logo HTML exactly as it is.
    - Update the employee's Name, Title, and Phone Number in the HTML.
    - Update the `<title>` tag.
    - Look inside the `vCardData` variable in the `<script>` tag at the bottom and update their Name, Title, Phone, and Email there (this controls the QR code).
-   - Update the `<img src="...">` path to point to their headshot (headshots are stored in `headshots/`). Make sure the headshot exists. If it doesn't, ask the user to provide it.
+   - Update the `<img src="...">` path to point to their headshot (e.g. `../headshots/colin_clinton_headshot.jpg`). Make sure the headshot exists.
 3. **Compile to PDF/PNG:**
    - You MUST run the compilation script to generate the final PDF and PNG files.
    - From the root of the repository, run: `node scripts/generate_print_ready.js print-cards/[employee_firstname]_card.html`
    - This script will use headless Chrome to render the HTML and automatically create the front PNG, back PNG, and print-ready PDF in the `print-cards/` directory.
+4. **Final Step:**
+   - Always tell the user to look at the **`.pdf`** or **`.png`** files that are generated, and NOT the raw `.html` file. If they preview the `.html` file in a code editor, the images will appear broken due to local server path restrictions.
 
 ## Apple Wallet Cards (.pkpass)
 If the user asks you to create an Apple Wallet Card (.pkpass file):
