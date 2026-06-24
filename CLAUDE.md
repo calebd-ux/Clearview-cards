@@ -12,6 +12,7 @@ If the user asks you to create a printable business card for a new employee:
 
 1. **Find a Template:** Look in the `print-cards/` directory. Copy an existing HTML template (e.g., `piers_card.html`) and name the new file `[employee_firstname]_card.html` inside the `print-cards/` directory.
 2. **Edit the HTML:**
+   - **CRITICAL:** DO NOT touch, edit, or attempt to insert image files for the T-Mobile or T-Fiber logos. The logos are already perfectly built into the template using CSS and HTML tags (e.g. `<span class="t-logo">T</span>`). Leave the logo HTML and CSS exactly as they are.
    - Update the employee's Name, Title, and Phone Number in the HTML.
    - Update the `<title>` tag.
    - Look inside the `vCardData` variable in the `<script>` tag at the bottom and update their Name, Title, Phone, and Email there (this controls the QR code).
