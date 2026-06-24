@@ -1,0 +1,24 @@
+{
+  "name": "clearview-cards",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/calebd-ux/Clearview-cards.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/calebd-ux/Clearview-cards/issues"
+  },
+  "homepage": "https://github.com/calebd-ux/Clearview-cards#readme",
+  "dependencies": {
+    "puppeteer-core": "^25.2.1"
+  }
+}
