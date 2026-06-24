@@ -90,14 +90,44 @@ const SCALE = 4;  // 4x for high-res output (~384 DPI)
     console.log(`✓ Generated ${baseName}_back.png`);
     await backPage.close();
 
-    // Generate PDF for printing
+    // Generate PDF for printing (Front and Back on exactly sized pages)
     const pdfPage = await browser.newPage();
     await pdfPage.goto(`file://${htmlPath}`, { waitUntil: 'networkidle0' });
+    
+    // Wait specifically for the QR code canvas to exist to ensure it rendered
+    await pdfPage.waitForSelector('#qrcode canvas', { timeout: 5000 }).catch(() => console.log('Warning: QR code canvas not found, it might be missing.'));
+
+    // Inject CSS to remove all body margins and set page size exactly to card size
+    await pdfPage.addStyleTag({ content: `
+        @page { size: ${CARD_W}in ${CARD_H}in; margin: 0; }
+        body { margin: 0; padding: 0; background: transparent; display: block; }
+        .card { width: ${CARD_W}in; height: ${CARD_H}in; margin: 0; border-radius: 0; box-shadow: none; display: flex; position: absolute; top: 0; left: 0; page-break-after: always; }
+        .card-front { page-break-after: always; }
+    ` });
+
+    await pdfPage.evaluate((w, h) => {
+        const allCards = document.querySelectorAll('.card');
+        if (allCards[0]) {
+            allCards[0].style.width = w + 'px';
+            allCards[0].style.height = h + 'px';
+            allCards[0].style.position = 'absolute';
+            allCards[0].style.top = '0';
+        }
+        if (allCards[1]) {
+            allCards[1].style.width = w + 'px';
+            allCards[1].style.height = h + 'px';
+            allCards[1].style.position = 'absolute';
+            allCards[1].style.top = h + 'px'; // Push to next page conceptually, though @page handles size
+            allCards[1].style.display = 'flex';
+        }
+    }, Math.round(CARD_W * 96), Math.round(CARD_H * 96));
+
     await pdfPage.pdf({
         path: path.join(OUTPUT_DIR, `${baseName}.pdf`),
         printBackground: true,
         width: `${CARD_W}in`,
-        height: `${CARD_H}in`
+        height: `${CARD_H}in`,
+        pageRanges: '1-2'
     });
     console.log(`✓ Generated ${baseName}.pdf`);
     await pdfPage.close();
