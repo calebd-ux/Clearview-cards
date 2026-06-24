@@ -10,7 +10,7 @@ Welcome! You are managing the generation of business cards and Apple Wallet pass
 ## How to Create a New Printable Business Card
 If the user asks you to create a printable business card for a new employee:
 
-1. **Find a Template:** Look in the `print-cards/` directory. Copy an existing HTML template (e.g., `piers_card.html`) and name the new file `[employee_firstname]_card.html` inside the `print-cards/` directory.
+1. **Find a Template:** Look in the `print-cards/` directory. Copy the file `template.html` and name the new file `[employee_firstname]_card.html` inside the `print-cards/` directory.
 2. **Edit the HTML:**
    - **CRITICAL:** DO NOT touch, edit, or attempt to insert image files for the T-Mobile or T-Fiber logos. The logos are already perfectly built into the template using CSS and HTML tags (e.g. `<span class="t-logo">T</span>`). Leave the logo HTML and CSS exactly as they are.
    - Update the employee's Name, Title, and Phone Number in the HTML.

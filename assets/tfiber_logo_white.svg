@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 210">
+  <g transform="translate(48, 5) scale(1.55)">
+    <path d="M38.683 3.895h1.911c12.343 0 18.096 6.603 20.5 24.212l3.822-.169L64.406 0H1.598L.979 27.938l3.678.169c.637-6.603 1.401-10.159 3.059-13.715 2.931-6.604 9.048-10.497 16.566-10.497h2.676v60.784c0 6.434-.382 8.466-1.91 9.99-1.275 1.185-3.824 1.693-6.756 1.693h-2.931v4.063H50.28v-4.063h-2.949c-2.913 0-5.48-.509-6.736-1.693-1.529-1.524-1.911-3.557-1.911-9.99V3.895" fill="#FFF"/>
+    <rect x="0" y="36.7" width="16.1" height="16.4" rx="1" fill="#FFF"/>
+    <rect x="49.3" y="36.7" width="16.1" height="16.4" rx="1" fill="#FFF"/>
+  </g>
+  <text x="100" y="195" text-anchor="middle" fill="#FFF" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="52" font-weight="700">Fiber</text>
+</svg>
